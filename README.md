@@ -2,7 +2,7 @@
 
 ## Project
 
-[![CircleCI](https://circleci.com/gh/cgebbe/DevOps_Microservices.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
+[![CircleCI status](https://circleci.com/gh/cgebbe/DevOps_Microservices.svg?style=svg)](https://app.circleci.com/pipelines/github/cgebbe/DevOps_Microservices)
 
 ### Summary
 
