@@ -1,1 +1,42 @@
-<paste log output from Kubernetes-mediated prediction, here>
+# Output from `source run_kubernetes.sh`
+
+error: failed to create deployment: deployments.apps "project-operationalize-ml-microservice" already exists
+NAME                                                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/project-operationalize-ml-microservice   1/1     1            1           16m
+
+NAME                                                               DESIRED   CURRENT   READY   AGE
+replicaset.apps/project-operationalize-ml-microservice-8c4555fb9   1         1         1       16m
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   14h
+
+NAME                                                         READY   STATUS    RESTARTS   AGE
+pod/project-operationalize-ml-microservice-8c4555fb9-lrqjg   1/1     Running   0          16m
+Forwarding from 0.0.0.0:8000 -> 80
+Handling connection for 8000
+
+# Output from `source make_prediction.sh`
+
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+
+# Output from `kubectl logs $POD_NAME`
+
+ * Debugger is active!
+ * Debugger PIN: 184-527-601
+[2022-09-23 10:32:03,801] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2022-09-23 10:32:03,828] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-09-23 10:32:03,841] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-09-23 10:32:03,846] INFO in app: scaled payload: 
+[[0. 0. 0. 0. 0. 0.]]
+[2022-09-23 10:32:03,847] INFO in app: prediction output: 
+[20.35373177134412]
